@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Growing Video</title>
+  <style>
+    /* Include the CSS from the previous response here */
+  </style>
+</head>
+<body>
+  <div id="video-container">
+    <video id="myVideo" controls width="640" height="480">
+      <source src="your_video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <script>
+    const videoElement = document.getElementById("myVideo");
+    const container = document.getElementById("video-container");
+
+    let currentWidth = videoElement.offsetWidth;
+    let currentHeight = videoElement.offsetHeight;
+    let growthRate = 5; // Adjust for desired growth speed (pixels per interval)
+    let intervalId = null;
+
+    function growVideo() {
+      currentWidth += growthRate;
+      currentHeight += growthRate;
+
+      videoElement.style.width = currentWidth + "px";
+      videoElement.style.height = currentHeight + "px";
+
+      // Check if video reaches container boundaries (optional)
+      if (currentWidth >= container.clientWidth || currentHeight >= container.clientHeight) {
+        stopGrowth();
+      }
+    }
+
+    function startGrowth() {
+      intervalId = setInterval(growVideo, 10); // Adjust interval for smoother animation (milliseconds)
+    }
+
+    function stopGrowth() {
+      clearInterval(intervalId);
+      intervalId = null;
+    }
+
+    // Start video growth on page load (optional)
+    window.onload = startGrowth;
+  </script>
+</body>
+</html>
