@@ -3,18 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Growing Video</title>
+  <title>Autoplay Video (With Sound)</title>
   <style>
     /* Include the CSS from the previous response here */
   </style>
 </head>
 <body>
   <div id="video-container">
-    <video id="myVideo" controls width="640" height="480">
-      <source src="your_video.mp4" type="video/mp4">
+    <video id="myVideo" controls width="640" height="480" autoplay muted>
+      <source src="soot safeer.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>
+
 
   <script>
     const videoElement = document.getElementById("myVideo");
@@ -31,6 +32,9 @@
 
       videoElement.style.width = currentWidth + "px";
       videoElement.style.height = currentHeight + "px";
+	   setTimeout(function() {
+     audioElement.play();
+   }, 1000);
 
       // Check if video reaches container boundaries (optional)
       if (currentWidth >= container.clientWidth || currentHeight >= container.clientHeight) {
